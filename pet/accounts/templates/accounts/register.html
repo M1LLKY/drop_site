@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать аккаунт</title>
+</head>
+<body>
+
+    {% if form.errors %}
+
+    <p>Пожалуйста, проверьте правильность данных.</p>
+
+    {% endif %}
+
+    <div class="registration-container">
+        <h2>Регистрация</h2>
+
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit">Зарегестрироваться</button>
+        </form>
+
+        <div class="form-footer">
+            <p>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка файлов</title>
+</head>
+<body>
+
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+    <header>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="register-btn">Выйти</a>
+        {% else %}
+        <nav>
+            <a href="{% url 'login' %}" class="register-btn">Войти</a>
+        </nav>
+        {% endif %}
+    </header>
+
+    <main>
+        <h1 class="centered-title">Загрузите файлы</h1>
+        <div class="upload-area">
+            <p>Перетащите файлы сюда или <button class="file-select-btn">Выберите файл</button></p>
+            <input type="file" id="file-input" style="display:none;">
+            <label for="storage-time">Сколько времени хранить файл:</label>
+            <select id="storage-time">
+                <option value="1h">3 минуты</option>
+                <option value="forever">Навсегда</option>
+            </select>
+        </div>
+    </main>
+</body>
+</html>
